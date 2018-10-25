@@ -1,0 +1,19 @@
+
+.Register-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+.full-width {
+    width: 75%;
+}
+.half-width {
+    width: 50%;
+}
+.quarter-width {
+    width: 25%;
+}
+
+article {
+    margin: 50px;
+}

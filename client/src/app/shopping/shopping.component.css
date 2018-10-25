@@ -1,0 +1,23 @@
+.example-card {
+    max-width: 250px;
+    background-color:skyblue;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  nav {
+    float: left;
+    width: 250px;
+    height: 600px;
+    background: transparent;
+    padding: 20px;
+  }
+  article {
+    float: left;
+    padding: 20px;
+    width: 60%;
+    background-color: transparent;
+    height: 300px;
+  }

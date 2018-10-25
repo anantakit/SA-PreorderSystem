@@ -1,0 +1,140 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <p class="a">จัดหมวดหมู่</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+<nav>
+</nav>
+<article class="body">
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          จัดหมวดหมู่
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="classification">
+        <ul>
+          <p>สินค้า</p>
+          <mat-form-field>
+            <mat-select [(ngModel)]="productSelect" placeholder="เลือกสินค้า">
+              <mat-option *ngFor="let product of products" [value]="product.productId">
+                {{product.productName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>หมวดหมู่</p>
+          <mat-form-field>
+            <mat-select [(ngModel)]="classSelect" placeholder="หมวดหมู่ของสินค้า">
+              <mat-option *ngFor="let classification of classifications" [value]="classification.classId">
+                {{classification.className}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>ประเภท</p>
+          <mat-form-field>
+            <mat-select placeholder="ประเภทของสินค้า" [(ngModel)]="typeSelect">
+              <mat-option *ngFor="let type of types " [value]="type.typeId">
+                {{type.typeName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>ส่งจากประเทศ</p>
+          <mat-form-field>
+            <mat-select placeholder="ประเทศ" [(ngModel)]="countrySelect">
+              <mat-option *ngFor="let country of countrys " [value]="country.countryId">
+                {{country.countryName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+          <button mat-raised-button color="primary" (click)="updateProduct()">บันทึก</button>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ตารางข้อมูลหมวดหมู่สินค้า
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="table">
+          <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหา">
+          </mat-form-field>
+        <table mat-table [dataSource]="dataSource">
+
+          <!-- รหัสสินค้า Column -->
+          <ng-container matColumnDef="productId">
+            <th mat-header-cell *matHeaderCellDef> รหัสสินค้า </th>
+            <td ma-cell *matCellDef="let element"> {{element.productId}} </td>
+          </ng-container>
+
+          <!-- ชื่อสินค้า Column -->
+          <ng-container matColumnDef="productName">
+            <th mat-header-cell *matHeaderCellDef> ชื่อสินค้า </th>
+            <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+          </ng-container>
+
+          <!-- หมวดหมู่ Column -->
+          <ng-container matColumnDef="classification">
+            <th mat-header-cell *matHeaderCellDef> หมวดหมู่ </th>
+            <td mat-cell *matCellDef="let element"> {{element.classification}} </td>
+          </ng-container>
+
+          <!-- ประเทศ Column -->
+          <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef> ประเทศ </th>
+            <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+          </ng-container>
+
+          <!-- ประเภท Column -->
+          <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> ประเภท </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator>
+
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          เพิ่มหมวดหมู่/เพิ่มประเภท
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="addClassification">
+          <mat-grid-list cols="4" rowHeight="2:1">
+              <mat-grid-tile>
+                  <mat-form-field class="example-full-width">
+                      <input matInput name="inputClass"  type="text" placeholder="ชื่อหมวดหมู่"  [(ngModel)]="inputClass" >
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <button mat-raised-button color="primary" (click)="addClassification()">เพิ่ม</button>
+              </mat-grid-tile>
+              <mat-grid-tile></mat-grid-tile>
+              <mat-grid-tile></mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field class="example-full-width">
+                      <input matInput name="inputType"  type="text" placeholder="ชื่อประเภท"  [(ngModel)]="inputType" >
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <button mat-raised-button color="primary" (click)="addType()">เพิ่ม</button>
+              </mat-grid-tile>
+              <mat-grid-tile></mat-grid-tile>
+              <mat-grid-tile></mat-grid-tile>
+            </mat-grid-list>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</article>

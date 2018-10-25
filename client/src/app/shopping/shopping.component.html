@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <p class="a">ร้านค้า</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+<nav>
+</nav>
+
+<article class="body">
+<mat-grid-list cols="5" rowHeight="2:1">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="ค้นหา" [(ngModel)]="searchText" >
+        </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="4" rowHeight="30rem">
+  <mat-grid-tile *ngFor="let product of products | myFilterPipe:searchText">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{product.productName}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image width="180px" height="180px" src="{{product.productImgUrl}}">
+      <mat-card-content>
+        <div>ข้อมูล:{{product.productDetail}}</div>
+        <div>ราคา:{{product.productPrice}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <a routerLink = "/preorder/{{product.productId}}">คลิก</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+</article>

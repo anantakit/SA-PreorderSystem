@@ -1,0 +1,84 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <p class="a">ใบPreorder</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class ="preorder">
+  <mat-grid-list cols="4" rowHeight="4:1">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <input matInput name = "productName" disabled="true"  placeholder="ชื่อสินค้า : {{productName}}">
+            </mat-form-field>
+          </form>
+    </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="5:1">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+          <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput name = "productPrice" disabled="true" placeholder="ราคาสินค้า : {{productPrice}}">
+              </mat-form-field>
+            </form>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+    </mat-grid-list>
+
+      <mat-grid-list cols="4" rowHeight="5:1">
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile><form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput name = "productNum" [(ngModel)]="preorder.amount"type="number" step="1" min="1" placeholder="จำนวนสินค้า" value="preorder.amount" (keyup)="onKey($event)">
+              </mat-form-field>
+            </form>
+          </mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-grid-list cols="4" rowHeight="5:1">
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                      <input matInput [(ngModel)]="preorder.sumPrice" name = "productNum" disabled="true" placeholder="รวมเป็นเงิน:฿{{preorder.sumPrice}}">
+                    </mat-form-field>
+                  </form>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+          </mat-grid-list>
+      
+        <mat-grid-list cols="4" rowHeight="5:1">
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                      <input matInput name = "productNum" disabled [(ngModel)]="statusName"placeholder="ยังไม่ได้สั่งซื้อ" value="" (keyup)="onKey($event)">
+                    </mat-form-field>
+                  </form>
+            </mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+            <mat-grid-tile></mat-grid-tile>
+          </mat-grid-list>
+                
+          <mat-grid-list cols="5" rowHeight="5:1">
+              <mat-grid-tile></mat-grid-tile>
+              <mat-grid-tile></mat-grid-tile>
+              <mat-grid-tile>
+                  <button mat-raised-button (click)="postPreorder(preorder)" color="primary">สั่งซื้อ</button>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <button mat-raised-button (click)="goShopping()" color="primary">ยกเลิก</button>
+              </mat-grid-tile>
+            </mat-grid-list>
+</div>
+
+
+                    
