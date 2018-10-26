@@ -1,0 +1,27 @@
+h1{
+  font-size: 18px;
+
+}
+li.a{
+  margin: 100px 150px 100px 80px;
+
+}
+
+nav {
+  float: left;
+  width: 250px;
+  height: 600px;
+  background: transparent;
+  padding: 20px;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 60%;
+  background-color: transparent;
+  height: 300px;
+}
+table {
+  width: 100%;
+}

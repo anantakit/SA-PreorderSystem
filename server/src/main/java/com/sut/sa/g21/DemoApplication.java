@@ -105,16 +105,19 @@ public class DemoApplication {
 			newUser.setUserLastName("Test");
 			newUser.setUserEmail("test@test.t");
 			newUser.setUserTelephone("0999999999");
+			newUser.setProvinces(provinceRepository.findById(44L).get());
 			userRepository.save(newUser);
 
 			
 			User newUser2 = new User(1);
-			newUser2.setUserUsername("Test02");
+			newUser2.setUserUsername("YoYo");
 			newUser2.setUserPassword("1234");
 			newUser2.setUserFirstName("Test");
 			newUser2.setUserLastName("Test");
+			newUser2.setUserAddress("24/16 ถนน บางรัก ตำบล เมืองดอย อำเภอ ดอนเมือง 15000");
 			newUser2.setUserEmail("test@test.t");
 			newUser2.setUserTelephone("0999999999");
+			newUser2.setProvinces(provinceRepository.findById(55L).get());
 			userRepository.save(newUser2);
 		};
 		

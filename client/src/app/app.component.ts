@@ -31,6 +31,12 @@ export class AppComponent {
   goRegister() { 
     this.router.navigate(['/Register']); 
   }
+  goShipping() {
+    this.router.navigate(['/shipping'])
+  }
+  goShowShipping(){
+    this.router.navigate(['/showship'])
+  }
 }
 
 

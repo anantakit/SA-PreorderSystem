@@ -15,5 +15,18 @@
 }
 
 article {
+    float: left;
+    padding: 20px;
+    width: 60%;
+    background-color: transparent;
+    height: 300px;
     margin: 50px;
-}
+  }
+  
+  nav {
+    float: left;
+    width: 250px;
+    height: 600px;
+    background: transparent;
+    padding: 20px;
+  }

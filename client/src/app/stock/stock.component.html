@@ -1,73 +1,37 @@
-<section>
-  <article>
-      <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                หมวดจัดการสินค้า
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="addNewProduct">
-                <mat-tab-group>
-                  <mat-tab label="เพิ่มสินค้าใหม่">
-                    <table class="add-new-product" cellspacing="5">
-                        <tr>
-                          <mat-form-field class="product-name">
-                            <input matInput name="newProductName" type="text" placeholder="ชื่อสินค้า" [(ngModel)]="product.productName">
-                          </mat-form-field>
-                        </tr>
-                        <tr>
-                          <mat-form-field class="product-img-url">
-                              <input matInput name="newProductImgUrl" type="text" placeholder="ลิงค์รูปภาพสินค้า" [(ngModel)]="product.productImgUrl">
-                          </mat-form-field>
-                        </tr>
-                        <tr>
-                          <mat-form-field class="product-price">
-                              <input matInput name="newProductPrice" type="number"  placeholder="ราคา" class="example-right-align" [(ngModel)]="product.productPrice">
-                              <span matPrefix>฿&nbsp;</span>
-                          </mat-form-field>
-                        </tr>
-                        <tr>
-                          <mat-form-field [style.fontSize]="16" class="product-detail">
-                            <mat-label>รายละเอียดสินค้า</mat-label>
-                            <textarea matInput
-                                      cdkTextareaAutosize
-                                      #autosize="cdkTextareaAutosize"
-                                      cdkAutosizeMinRows="2"
-                                      cdkAutosizeMaxRows="5"
-                                      name="newProductDetail" [(ngModel)]="product.productDetail"></textarea>
-                          </mat-form-field>
-                        </tr>
-                        <tr>
-                          <button mat-raised-button color="primary" (click)="addProduct2(product)">ยืนยัน</button>
-                        </tr>
-                      </table>
-                  </mat-tab>
-        
-                  <mat-tab label="แก้ไขข้อมูลสินค้า">
-                    <table class="edit-product" cellspacing="5">
-                        <mat-form-field>
-                            <mat-select [(ngModel)]="editProductData.productId" placeholder="เลือกสินค้า">
-                              <mat-option *ngFor="let products of products" [value]="products.productId">
-                                {{products.productName}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <p class="a">ระบบสต๊อกสินค้า</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+<nav>
+</nav>
+<article>
+    <mat-accordion>
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              หมวดจัดการสินค้า
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="addNewProduct">
+              <mat-tab-group>
+                <mat-tab label="เพิ่มสินค้าใหม่">
+                  <table class="add-new-product" cellspacing="5">
                       <tr>
-                        <mat-form-field class="product-new-name">
-                          <input matInput name="product.editNewProductName" placeholder="ชื่อสินค้าใหม่" [(ngModel)]="editProductData.productName">
+                        <mat-form-field class="product-name">
+                          <input matInput name="newProductName" type="text" placeholder="ชื่อสินค้า" [(ngModel)]="product.productName">
                         </mat-form-field>
                       </tr>
                       <tr>
-                          <mat-form-field class="product-img-url">
-                              <input matInput name="product.editProductImgUrl" placeholder="ลิงค์รูปภาพสินค้า" [(ngModel)]="editProductData.productImgUrl">
-                          </mat-form-field>
+                        <mat-form-field class="product-img-url">
+                            <input matInput name="newProductImgUrl" type="text" placeholder="ลิงค์รูปภาพสินค้า" [(ngModel)]="product.productImgUrl">
+                        </mat-form-field>
                       </tr>
                       <tr>
-                          <mat-form-field class="product-price">
-                              <input matInput name="product.editProductPrice" type="number" placeholder="ราคา" class="example-right-align" [(ngModel)]="editProductData.productPrice">
-                              <span matPrefix>฿&nbsp;</span>
-                          </mat-form-field>
+                        <mat-form-field class="product-price">
+                            <input matInput name="newProductPrice" type="number"  placeholder="ราคา" class="example-right-align" [(ngModel)]="product.productPrice">
+                            <span matPrefix>฿&nbsp;</span>
+                        </mat-form-field>
                       </tr>
                       <tr>
                         <mat-form-field [style.fontSize]="16" class="product-detail">
@@ -77,153 +41,194 @@
                                     #autosize="cdkTextareaAutosize"
                                     cdkAutosizeMinRows="2"
                                     cdkAutosizeMaxRows="5"
-                                    name="editProductDetail" [(ngModel)]="editProductData.productDetail"></textarea>
+                                    name="newProductDetail" [(ngModel)]="product.productDetail"></textarea>
                         </mat-form-field>
                       </tr>
                       <tr>
-                        <button mat-raised-button color="primary" (click)="editProduct2(editProductData)">ยืนยัน</button>
+                        <button mat-raised-button color="primary" (click)="addProduct2(product)">ยืนยัน</button>
                       </tr>
                     </table>
-                  </mat-tab>
-                </mat-tab-group>
-            </div>
-          </mat-expansion-panel>
-
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              หมวดจัดการคลังสินค้า
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <div class="manage-warehouse">
-              <mat-tab-group>
-                <mat-tab label="รายการสั่งซื้อสินค้า">
-                  <br>
-                  <div class="search" style="align: center">
-                    <mat-form-field>
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหา">
-                    </mat-form-field>
-                  </div>
-                  <br>
-                  
-                  <table mat-table [dataSource]="dataSource">
-                      <ng-container matColumnDef="orderproductId">
-                          <th mat-header-cell *matHeaderCellDef> เลขที่ใบสั่งซื้อ </th>
-                          <td ma-cell *matCellDef="let element"> {{element.orderproductId}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="preId">
-                          <th mat-header-cell *matHeaderCellDef> เลขที่ใบพรีออเดอร์ </th>
-                          <td mat-cell *matCellDef="let element"> {{element.preId}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="productName">
-                          <th mat-header-cell *matHeaderCellDef> ชื่อสินค้า </th>
-                          <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="warehouseName">
-                          <th mat-header-cell *matHeaderCellDef> คลังสินค้าที่จัดเก็บ </th>
-                          <td mat-cell *matCellDef="let element"> {{element.warehouseName}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="preStatus">
-                          <th mat-header-cell *matHeaderCellDef> สถานะสั่งซื้อ </th>
-                          <td mat-cell *matCellDef="let element"> {{element.preStatus}} </td>
-                        </ng-container>
-    
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-                    </table>
-                   
-                    <table class="manage-product" cellspacing="5">
-                      <tr>
-                          <br><br><p>ย้ายสินค้าไปคลังอื่น</p><hr>
-                      </tr>
+                </mat-tab>
+      
+                <mat-tab label="แก้ไขข้อมูลสินค้า">
+                  <table class="edit-product" cellspacing="5">
+                      <mat-form-field>
+                          <mat-select [(ngModel)]="editProductData.productId" placeholder="เลือกสินค้า">
+                            <mat-option *ngFor="let products of products" [value]="products.productId">
+                              {{products.productName}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
                     <tr>
-                      <mat-form-field class="preorder-id">
-                        <mat-select [(ngModel)]="disOrderProductIdSelect" placeholder="หมายเลขใบสั่งซื้อ">
-                          <mat-option *ngFor="let orderProduct of orderProducts" [value]="orderProduct.orderProductId">
-                            {{orderProduct.orderProductId}}
-                          </mat-option>
-                        </mat-select>
+                      <mat-form-field class="product-new-name">
+                        <input matInput name="product.editNewProductName" placeholder="ชื่อสินค้าใหม่" [(ngModel)]="editProductData.productName">
                       </mat-form-field>
                     </tr>
                     <tr>
-                      <mat-form-field class="warehouse">
-                        <mat-select [(ngModel)]="disWarehouseSelect" placeholder="คลังสินค้าที่จะย้ายไป">
-                          <mat-option *ngFor="let warehouse of ThaiWarehouseLists" [value]="warehouse.warehouseId">
-                            {{warehouse.warehouseName}}
-                          </mat-option>
-                        </mat-select>
+                        <mat-form-field class="product-img-url">
+                            <input matInput name="product.editProductImgUrl" placeholder="ลิงค์รูปภาพสินค้า" [(ngModel)]="editProductData.productImgUrl">
+                        </mat-form-field>
+                    </tr>
+                    <tr>
+                        <mat-form-field class="product-price">
+                            <input matInput name="product.editProductPrice" type="number" placeholder="ราคา" class="example-right-align" [(ngModel)]="editProductData.productPrice">
+                            <span matPrefix>฿&nbsp;</span>
+                        </mat-form-field>
+                    </tr>
+                    <tr>
+                      <mat-form-field [style.fontSize]="16" class="product-detail">
+                        <mat-label>รายละเอียดสินค้า</mat-label>
+                        <textarea matInput
+                                  cdkTextareaAutosize
+                                  #autosize="cdkTextareaAutosize"
+                                  cdkAutosizeMinRows="2"
+                                  cdkAutosizeMaxRows="5"
+                                  name="editProductDetail" [(ngModel)]="editProductData.productDetail"></textarea>
                       </mat-form-field>
                     </tr>
                     <tr>
-                      <button mat-raised-button color="primary" (click)="movProduct()">ยืนยัน</button>
+                      <button mat-raised-button color="primary" (click)="editProduct2(editProductData)">ยืนยัน</button>
                     </tr>
                   </table>
                 </mat-tab>
               </mat-tab-group>
           </div>
         </mat-expansion-panel>
-      
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                ระบบสั่งซื้อสินค้า
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="order-product">
-                <table class="order-product" cellspacing="5">
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            หมวดจัดการคลังสินค้า
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="manage-warehouse">
+            <mat-tab-group>
+              <mat-tab label="รายการสั่งซื้อสินค้า">
+                <br>
+                <div class="search" style="align: center">
+                  <mat-form-field>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="ค้นหา">
+                  </mat-form-field>
+                </div>
+                <br>
+                
+                <table mat-table [dataSource]="dataSource">
+                    <ng-container matColumnDef="orderproductId">
+                        <th mat-header-cell *matHeaderCellDef> เลขที่ใบสั่งซื้อ </th>
+                        <td ma-cell *matCellDef="let element"> {{element.orderproductId}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="preId">
+                        <th mat-header-cell *matHeaderCellDef> เลขที่ใบพรีออเดอร์ </th>
+                        <td mat-cell *matCellDef="let element"> {{element.preId}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="productName">
+                        <th mat-header-cell *matHeaderCellDef> ชื่อสินค้า </th>
+                        <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="warehouseName">
+                        <th mat-header-cell *matHeaderCellDef> คลังสินค้าที่จัดเก็บ </th>
+                        <td mat-cell *matCellDef="let element"> {{element.warehouseName}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="preStatus">
+                        <th mat-header-cell *matHeaderCellDef> สถานะสั่งซื้อ </th>
+                        <td mat-cell *matCellDef="let element"> {{element.preStatus}} </td>
+                      </ng-container>
+  
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                  </table>
+                 
+                  <table class="manage-product" cellspacing="5">
+                    <tr>
+                        <br><br><p>ย้ายสินค้าไปคลังอื่น</p><hr>
+                    </tr>
                   <tr>
                     <mat-form-field class="preorder-id">
-                      <mat-select [(ngModel)]="ordPreorderId" placeholder="หมายเลขใบสั่งจอง">
-                        <mat-option *ngFor="let Preorder of PreordersNotOrder" [value]="Preorder.preId">
-                          {{Preorder.preId}}
+                      <mat-select [(ngModel)]="disOrderProductIdSelect" placeholder="หมายเลขใบสั่งซื้อ">
+                        <mat-option *ngFor="let orderProduct of orderProducts" [value]="orderProduct.orderProductId">
+                          {{orderProduct.orderProductId}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
                   </tr>
                   <tr>
-                       <mat-form-field class="product-name">
-                         <mat-select [(ngModel)]="ordProductId" placeholder="สินค้า">
-                          <mat-option *ngFor="let products of products" [value]="products.productId">
-                            {{products.productName}}
-                          </mat-option>
-                        </mat-select>
-                       </mat-form-field>
-                  </tr>
-              
-                  <tr>
-                    <mat-form-field class="product-amount">
-                      <input matInput name="ordProductAmount" type="number" placeholder="จำนวน" [(ngModel)]="ordProductAmount">
-                    </mat-form-field>
-                  </tr>
-                  <tr>
-                    <mat-form-field class="product-price">
-                      <input matInput name="ordTotalPrice" type="number" placeholder="ราคา" [(ngModel)]="ordTotalPrice">
-                    </mat-form-field>
-                  </tr>
-                  <tr>
-                    <mat-form-field>
-                      <mat-select [(ngModel)]="ordWarehouseId" placeholder="คลังสินค้าที่จัดเก็บ">
-                        <mat-option *ngFor="let AboardWarehouseList of AboardWarehouseLists" [value]="AboardWarehouseList.warehouseId">
-                          {{AboardWarehouseList.warehouseName}}
+                    <mat-form-field class="warehouse">
+                      <mat-select [(ngModel)]="disWarehouseSelect" placeholder="คลังสินค้าที่จะย้ายไป">
+                        <mat-option *ngFor="let warehouse of ThaiWarehouseLists" [value]="warehouse.warehouseId">
+                          {{warehouse.warehouseName}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
                   </tr>
-              
                   <tr>
-                    <button mat-raised-button color="primary" (click)="addOrder()">ยืนยัน</button>
+                    <button mat-raised-button color="primary" (click)="movProduct()">ยืนยัน</button>
                   </tr>
                 </table>
-              
-            </div>  
-          </mat-expansion-panel>
-      </mat-accordion>
+              </mat-tab>
+            </mat-tab-group>
+        </div>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              ระบบสั่งซื้อสินค้า
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="order-product">
+              <table class="order-product" cellspacing="5">
+                <tr>
+                  <mat-form-field class="preorder-id">
+                    <mat-select [(ngModel)]="ordPreorderId" placeholder="หมายเลขใบสั่งจอง">
+                      <mat-option *ngFor="let Preorder of PreordersNotOrder" [value]="Preorder.preId">
+                        {{Preorder.preId}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </tr>
+                <tr>
+                     <mat-form-field class="product-name">
+                       <mat-select [(ngModel)]="ordProductId" placeholder="สินค้า">
+                        <mat-option *ngFor="let products of products" [value]="products.productId">
+                          {{products.productName}}
+                        </mat-option>
+                      </mat-select>
+                     </mat-form-field>
+                </tr>
+            
+                <tr>
+                  <mat-form-field class="product-amount">
+                    <input matInput name="ordProductAmount" type="number" placeholder="จำนวน" [(ngModel)]="ordProductAmount">
+                  </mat-form-field>
+                </tr>
+                <tr>
+                  <mat-form-field class="product-price">
+                    <input matInput name="ordTotalPrice" type="number" placeholder="ราคา" [(ngModel)]="ordTotalPrice">
+                  </mat-form-field>
+                </tr>
+                <tr>
+                  <mat-form-field>
+                    <mat-select [(ngModel)]="ordWarehouseId" placeholder="คลังสินค้าที่จัดเก็บ">
+                      <mat-option *ngFor="let AboardWarehouseList of AboardWarehouseLists" [value]="AboardWarehouseList.warehouseId">
+                        {{AboardWarehouseList.warehouseName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </tr>
+            
+                <tr>
+                  <button mat-raised-button color="primary" (click)="addOrder()">ยืนยัน</button>
+                </tr>
+              </table>
+            
+          </div>  
+        </mat-expansion-panel>
+    </mat-accordion>
 
-  </article>
-</section>
+</article>

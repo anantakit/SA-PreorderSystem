@@ -1,13 +1,9 @@
 package com.sut.sa.g21.entity;
-
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.*;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Getter @Setter
 @Table(name="Stock")

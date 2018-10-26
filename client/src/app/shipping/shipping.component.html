@@ -1,0 +1,97 @@
+
+<mat-toolbar color="primary">
+</mat-toolbar>
+<nav>
+</nav>
+<article class="body">
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          ใบจัดส่ง
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="classification">
+        <ul>
+          <p>ใบpreorder่</p>
+          <mat-form-field>
+            <mat-select [(ngModel)]="preorderSelect" placeholder="ใบpreorder">
+              <mat-option *ngFor="let preorder of preorders" [value]="preorder.preId">
+                {{preorder.user.userUsername+" ซื้อ "+preorder.product.productName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <p>ขั้นตอน</p>
+          <mat-form-field>
+            <mat-select [(ngModel)]="processSelect" placeholder="ขั้นตอน">
+              <mat-option *ngFor="let process of processs" [value]="process.shippingProcessId">
+                {{process.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+
+          <span>ระยะเวลาที่ส่งสินค้า</span><br>
+
+            <mat-form-field color="accent">
+              <mat-label>วันที่ส่งสินค้า</mat-label>
+              <input matInput name = inputDateStart [matDatepicker]="picker1" [(ngModel)]="inputDateStart">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field><br>
+
+            <mat-form-field >
+              <mat-label>วันที่สินค้าถึงปลายทาง</mat-label>
+              <input matInput name = inputDateEnd [matDatepicker]="picker2" [(ngModel)]="inputDateEnd">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" (click)="postSlip()">บันทึก</button>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          เพิ่มขั้นตอน
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="addClassification">
+        <mat-grid-list cols="4" rowHeight="2:1">
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+              <input matInput name="inputProcess"  type="text" placeholder="ชื่อขั้นตอน"  [(ngModel)]="inputProcess" >
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile>
+            <mat-form-field class="example-full-width">
+              <textarea matInput name="inputDetail" placeholder="รายละเอียด" [(ngModel)]="inputDetail" ></textarea>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <button mat-raised-button color="primary" (click)="postProcess()">เพิ่ม</button>
+          </mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+
+        </mat-grid-list>
+      </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</article>
+
+
+
+
+
+
+
+
+

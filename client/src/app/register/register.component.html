@@ -1,84 +1,89 @@
-<section>
-  <article>
-    <div class="Register-form">
-      <mat-form-field class="full-width">
-        <input matInput  disabled value="ระบบสมัครสมาชิก">
-      </mat-form-field>
-      <table class="full-width" cellspacing="0">
-        <tr>
-          <mat-form-field class="full-width">
-            <input matInput type="text"  placeholder="Username" [(ngModel)]="reg.Username">
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="full-width">
-            <input matInput type="password"  placeholder="Password" [(ngModel)]="reg.Password">
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="full-width">
-            <input matInput type="password"  placeholder="Confirm Password" [(ngModel)]="reg.RePassword">
-          </mat-form-field>
-        </tr>
-      </table>
-      <mat-form-field class="full-width">
-        <input matInput  disabled value="ข้อมูลส่วนตัว">
-      </mat-form-field>
-      <table class="full-width" cellspacing="0">
-        <tr>
-          <mat-form-field class="full-width">
-            <input matInput type="text"  placeholder="ชื่อ" [(ngModel)]="reg.FirstName">
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="full-width">
-            <input matInput type="text"  placeholder="นามสกุล" [(ngModel)]="reg.LastName">
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="quarter-width">
-            <mat-select [(ngModel)]="reg.Gender" placeholder="เพศ">
-              <mat-option *ngFor="let gender of genders" [value]="gender.genderId">
-                {{gender.genderName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field [style.fontSize]="16" class="Address">
-            <mat-label>ที่อยู่</mat-label>
-            <textarea matInput
-                      cdkTextareaAutosize
-                      #autosize="cdkTextareaAutosize"
-                      cdkAutosizeMinRows="2"
-                      cdkAutosizeMaxRows="5"
-                      name="reg.Address" [(ngModel)]="reg.Address"></textarea>
-          </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="half-width">
-            <mat-select [(ngModel)]="reg.Province" placeholder="จังหวัด">
-              <mat-option *ngFor="let province of provinces" [value]="province.provinceId">
-                {{province.provinceName}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </tr>
-        <tr>
-         <mat-form-field class="full-width">
-           <input type="text" matInput placeholder="E-mail" [(ngModel)]="reg.Email">
-         </mat-form-field>
-        </tr>
-        <tr>
-          <mat-form-field class="full-width">
-            <span matPrefix>+66 &nbsp;</span>
-            <input type="tel" matInput placeholder="เบอรโทรศัพท์" type="number" [(ngModel)]="reg.Telephone">
-          </mat-form-field>
-        </tr>
-        <tr>
-          <button mat-raised-button color="primary" (click)="register(reg)">ยืนยัน</button>
-        </tr>
-      </table>
-    </div>
-  </article>
-</section>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <p class="a">ระบบสมัครสมาชิก</p>
+  </mat-toolbar-row>
+</mat-toolbar>
+<nav>
+</nav>
+<article>
+  <div class="Register-form">
+    <mat-form-field class="full-width">
+      <input matInput  disabled value="ระบบสมัครสมาชิก">
+    </mat-form-field>
+    <table class="full-width" cellspacing="0">
+      <tr>
+        <mat-form-field class="full-width">
+          <input matInput type="text"  placeholder="Username" [(ngModel)]="reg.Username">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="full-width">
+          <input matInput type="password"  placeholder="Password" [(ngModel)]="reg.Password">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="full-width">
+          <input matInput type="password"  placeholder="Confirm Password" [(ngModel)]="reg.RePassword">
+        </mat-form-field>
+      </tr>
+    </table>
+    <mat-form-field class="full-width">
+      <input matInput  disabled value="ข้อมูลส่วนตัว">
+    </mat-form-field>
+    <table class="full-width" cellspacing="0">
+      <tr>
+        <mat-form-field class="full-width">
+          <input matInput type="text"  placeholder="ชื่อ" [(ngModel)]="reg.FirstName">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="full-width">
+          <input matInput type="text"  placeholder="นามสกุล" [(ngModel)]="reg.LastName">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="quarter-width">
+          <mat-select [(ngModel)]="reg.Gender" placeholder="เพศ">
+            <mat-option *ngFor="let gender of genders" [value]="gender.genderId">
+              {{gender.genderName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field [style.fontSize]="16" class="Address">
+          <mat-label>ที่อยู่</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="2"
+                    cdkAutosizeMaxRows="5"
+                    name="reg.Address" [(ngModel)]="reg.Address"></textarea>
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="half-width">
+          <mat-select [(ngModel)]="reg.Province" placeholder="จังหวัด">
+            <mat-option *ngFor="let province of provinces" [value]="province.provinceId">
+              {{province.provinceName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </tr>
+      <tr>
+       <mat-form-field class="full-width">
+         <input type="text" matInput placeholder="E-mail" [(ngModel)]="reg.Email">
+       </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="full-width">
+          <span matPrefix>+66 &nbsp;</span>
+          <input type="tel" matInput placeholder="เบอรโทรศัพท์" type="number" [(ngModel)]="reg.Telephone">
+        </mat-form-field>
+      </tr>
+      <tr>
+        <button mat-raised-button color="primary" (click)="register(reg)">ยืนยัน</button>
+      </tr>
+    </table>
+  </div>
+</article>
