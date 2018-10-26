@@ -14,7 +14,6 @@ export class PreorderComponent implements OnInit {
   productName = '';
   productPrice = 0;
   userName = 'YoYo';
-  statusName:string;
   productSelect:any;
   preorder: any = {
     amount: '',
@@ -23,7 +22,7 @@ export class PreorderComponent implements OnInit {
   constructor(private preorderService: PreorderService,private route: ActivatedRoute,private router: Router) { 
     this.productIndex = route.snapshot.params.product;
   }
-
+  
 ngOnInit() {
     
       this.preorderService.getProduct( this.productIndex).subscribe(data => {
@@ -35,16 +34,14 @@ ngOnInit() {
         this.statuses = data;
         console.log(this.statuses);
       });
-
     }
   //เพิ่มใบพรีออเดอร์
   postPreorder(preorder:NgForm){
-      this.statusName  = 'รอชำระเงิน';
-      this.preorderService.addNewPreorder(this.userName,this.productIndex,this.statusName,preorder).subscribe(
+      this.preorderService.addNewPreorder(this.userName,this.productIndex,preorder).subscribe(
       data => {
         console.log(data);
         localStorage.setItem("myObject",JSON.stringify(data));
-        alert('ซื้อ '+this.productName+' แล้ว '+' สถานะ : '+this.statusName);
+        alert('ซื้อ '+this.productName+' แล้ว ');
         this.router.navigate(['/show-preorder'])
       },
       error => {
@@ -65,5 +62,4 @@ ngOnInit() {
       console.log('Error');
     }
   }
-
 }

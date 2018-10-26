@@ -23,7 +23,7 @@ public class DemoApplication {
             });
 			provinceRepository.findAll().forEach(System.out::println);
 			
-			Stream.of("ยังไม่ได้สั่ง","รอชำระเงิน").forEach(statusName -> { 
+			Stream.of("รอชำระเงิน","ชำระเงินแล้ว","ส่งสินค้าแล้ว").forEach(statusName -> { 
                 statusRepository.save(new Status(statusName));
             });
 			statusRepository.findAll().forEach(System.out::println);

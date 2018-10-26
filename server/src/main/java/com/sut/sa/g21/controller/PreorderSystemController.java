@@ -1,7 +1,6 @@
 package com.sut.sa.g21.controller;
 import java.util.Collection;
 import java.util.Optional;
-
 import com.sut.sa.g21.entity.User;
 import com.sut.sa.g21.entity.Preorder;
 import com.sut.sa.g21.entity.Product;
@@ -73,12 +72,12 @@ public class PreorderSystemController{
         Collection<Preorder> preorder = preorderRepository.findByUser(user);
         return preorder;
     }
-    @PostMapping("/newPreorder/{userName}/{productId}/{statusName}")
-    public Preorder newPreorder(@PathVariable String userName,@PathVariable Long productId,@PathVariable String statusName,@RequestBody() Map<String,Object> body){                     
+    @PostMapping("/newPreorder/{userName}/{productId}")
+    public Preorder newPreorder(@PathVariable String userName,@PathVariable Long productId,@RequestBody() Map<String,Object> body){                     
         Preorder newPreorder = new Preorder();
         Product product = productRepository.findById(productId).get(); 
         User user = userRepository.findByuserUsername(userName);
-        Status status = statusRepository.findByStatusName(statusName);
+        Status status = statusRepository.findById(1L).get();
         newPreorder.setAmount(Long.valueOf(body.get("amount").toString()));
         newPreorder.setSumPrice(Double.valueOf(body.get("sumPrice").toString()));
         newPreorder.setStatus(status);

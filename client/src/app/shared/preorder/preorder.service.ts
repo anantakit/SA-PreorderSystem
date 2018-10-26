@@ -19,8 +19,8 @@ export class PreorderService {
   getStatus(): Observable<any>{
     return this.http.get('//localhost:8080/Status');
   }
-  addNewPreorder(userName:string,productId:number,statusName:string,preorder:Form):Observable<any>{
-    return this.http.post('//localhost:8080/newPreorder/'+userName+'/'+productId+'/'+statusName+'/',preorder);
+  addNewPreorder(userName:string,productId:number,preorder:Form):Observable<any>{
+    return this.http.post('//localhost:8080/newPreorder/'+userName+'/'+productId+'/',preorder);
   }
   getPreorderByUserName(userName:string){
     return this.http.get('//localhost:8080/Preorder/'+userName);
