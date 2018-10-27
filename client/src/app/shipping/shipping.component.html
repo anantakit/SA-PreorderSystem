@@ -1,5 +1,5 @@
 
-<mat-toolbar color="primary">
+<mat-toolbar color="accent">
 </mat-toolbar>
 <nav>
 </nav>
@@ -18,7 +18,7 @@
           <mat-form-field>
             <mat-select [(ngModel)]="preorderSelect" placeholder="ใบpreorder">
               <mat-option *ngFor="let preorder of preorders" [value]="preorder.preId">
-                {{preorder.user.userUsername+" ซื้อ "+preorder.product.productName}}
+                {{preorder.preId+" "+preorder.user.userUsername+" ซื้อ "+preorder.product.productName}}
               </mat-option>
             </mat-select>
           </mat-form-field>

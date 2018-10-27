@@ -20,7 +20,7 @@ public class LoginController {
     public void login(@RequestBody User userInfoEntity) throws Exception {
         System.out.println(userInfoEntity.getUserUsername());
         User user = userRepository.findByuserUsername(userInfoEntity.getUserUsername());
-            if (!loginAuth(userInfoEntity.getUserPassword().getBytes(),userInfoEntity.getUserPassword().getBytes()))
+            if (!loginAuth(user.getUserPassword().getBytes(),userInfoEntity.getUserPassword().getBytes()))
                 throw new Exception();
     }
 
@@ -29,8 +29,11 @@ public class LoginController {
         if (userPassword.length != password.length)
             return false;
         else{
-            for (int i = 0; i < password.length; i++)
+            for (int i = 0; i < password.length; i++){
                 result |= password[i] ^ userPassword[i];
+                if (result == 1)
+                    return false;
+            }
         }
         return result == 0;
     }

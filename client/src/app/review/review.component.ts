@@ -17,7 +17,7 @@ export class ReviewComponent implements OnInit {
   productSelect:number = 0 ;
   suggestionSelect:number = 0;
   scoreSelect:number = 0;
-  userNameLogin:number = 1;
+  userNameLogin = '';
   num:number = 0;
 
   star(data){
@@ -55,7 +55,8 @@ export class ReviewComponent implements OnInit {
   }
 
   addReview(){
-    if(this.addcomment.inputComment === '' || this.addcomment.scoreSelect === 0|| this.suggestionSelect === 0 || this.userNameLogin === 0|| this.productSelect === 0)
+    this.userNameLogin = localStorage.getItem('id');
+    if(this.addcomment.inputComment === '' || this.addcomment.scoreSelect === 0|| this.suggestionSelect === 0 || this.userNameLogin === ''|| this.productSelect === 0)
     alert('กรุณากรอกข้อมูลให้ครบถ้วน');
     else{
     console.log(this.addcomment)

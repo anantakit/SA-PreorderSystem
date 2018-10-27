@@ -2,16 +2,17 @@
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <ul class="A">
-        <li><button mat-button (click)="goHomePage()">หน้าหลัก</button></li>
-        <li><button mat-button (click)="goShopping()">เลือกสินค้า</button></li>
-        <li><button mat-button (click)="goClassification()">จัดหมวดหมู่</button></li>
-        <li><button mat-button (click)="goHistory()">ประวัติการสั่งซื้อ</button></li>
-        <li><button mat-button (click)="goStock()">ระบบสต๊อก</button></li>
-        <li><button mat-button (click)="goRegister()">สมัครสมาชิก</button></li>
-        <li><button mat-button (click)="goShipping()">จัดทำใบจัดส่ง</button></li>
-        <li><button mat-button (click)="goShowShipping()">แสดงใบจัดส่ง</button></li>
-        <li><button mat-button (click)="goReview()">รีวิวให้คะแนนร้านค้า</button></li>
-        <li><button mat-button (click)="goTranfer()">ชำระสินค้า</button></li>
+        <li><button mat-button *ngIf="isUndefine()" (click)="goHomePage()">เข้าสู่ระบบ</button></li>
+        <li><button mat-button *ngIf="(!isUndefine()||isUndefine())&&!isAdmin()" (click)="goShopping()">เลือกสินค้า</button></li>
+        <li><button mat-button *ngIf="isAdmin()" (click)="goClassification()">จัดหมวดหมู่</button></li>
+        <li><button mat-button *ngIf="!isUndefine()&&!isAdmin()" (click)="goHistory()">ประวัติการสั่งซื้อ</button></li>
+        <li><button mat-button *ngIf="isAdmin()" (click)="goStock()">ระบบสต๊อก</button></li>
+        <li><button mat-button *ngIf="isUndefine()" (click)="goRegister()">สมัครสมาชิก</button></li>
+        <li><button mat-button *ngIf="isAdmin()" (click)="goShipping()">จัดทำใบจัดส่ง</button></li>
+        <li><button mat-button *ngIf="!isUndefine()&&!isAdmin()" (click)="goShowShipping()">แสดงใบจัดส่ง</button></li>
+        <li><button mat-button *ngIf="!isUndefine()&&!isAdmin()" (click)="goTranfer()">ชำระสินค้า</button></li>
+        <li><button mat-button *ngIf="!isUndefine()||isUndefine()" (click)="goReview()">รีวิวให้คะแนนร้านค้า</button></li>
+        <li><button mat-button *ngIf="!isUndefine()" (click)="logout()">ออกจากระบบ</button></li>
       </ul>
     </mat-toolbar-row>
   </mat-toolbar>

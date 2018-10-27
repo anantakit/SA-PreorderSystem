@@ -16,7 +16,7 @@ export class LoginService {
     return result;
   }
 
-  setUsername(username:any){
-    this.username = username;
+  loginedIn(){
+    return !!localStorage.getItem('id');
   }
 }

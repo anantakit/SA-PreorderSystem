@@ -29,7 +29,7 @@ public class PaymentController {
     @CrossOrigin(origins = "http://localhost:4200")
     @Transactional
     public Payment newPayment(@RequestBody Payment newPayment,
-                           @PathVariable Long preorderNumber, @PathVariable String fileName){
+                                    @PathVariable Long preorderNumber, @PathVariable String fileName){
         Preorder preorder = preorderRepository.findById(preorderNumber).get();
         Status status = statusRepository.findById(2L).get();
         preorder.setStatus(status);

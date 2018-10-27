@@ -16,8 +16,8 @@ export class TranferComponent implements OnInit {
   username:any;
 
   names:any={
-    id:'',
-    name:''
+    userFirstName:'',
+    userLastName:''
   };
 
   reports:Array<any>;
@@ -40,7 +40,6 @@ export class TranferComponent implements OnInit {
     this.username = localStorage.getItem('id');
     this.tranferService.getUser(this.username).subscribe(data => {
       this.names = data;
-      console.log(this.names);
     });
     this.tranferService.getPayment(this.username).subscribe(data => {
       this.reports = data;
@@ -64,11 +63,11 @@ export class TranferComponent implements OnInit {
       alert('upload error');
     });
     this.tranferService.save(form,this.payment.id,this.currentFileUpload.name).subscribe(data => {
-        alert('save suscess');
-        console.log(form+'\n'+this.payment.id+'\n'+this.currentFileUpload.name);
-      },error1 => {
-        alert('save error');
-      });
+      alert('save suscess');
+      console.log(form+'\n'+this.payment.id+'\n'+this.currentFileUpload.name);
+    },error1 => {
+      alert('save error');
+    });
   }
 
 }

@@ -25,7 +25,7 @@ export class ReviewService {
     }
 
 
-     addReview(inputComment:string,scoreSelect:number,userNameLogin:number,productSelect:number,suggestionSelect:number){
+     addReview(inputComment:string,scoreSelect:number,userNameLogin:string,productSelect:number,suggestionSelect:number){
     return this.http.post(this.API + '/Review/createReview/'+userNameLogin+'/'+productSelect+'/'+suggestionSelect+'/'+inputComment+'/'+scoreSelect,{
      
       "productName":productSelect,

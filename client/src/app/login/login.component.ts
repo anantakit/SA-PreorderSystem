@@ -23,7 +23,10 @@ export class LoginComponent implements OnInit {
   login(userForm:NgForm){
     this.loginService.login(userForm).subscribe(data => {
       localStorage.setItem('id',this.user.userUsername);
-      this.route.navigate(['shopping']);
+      if(this.user.userUsername!='admin')
+        this.route.navigate(['/shopping']);
+      else
+        this.route.navigate(['/classification']);
     },error => {
       alert('wrong username or password');
     })

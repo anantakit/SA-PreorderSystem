@@ -2,18 +2,11 @@ package com.sut.sa.g21.controller;
 
 import java.util.Collection;
 import java.util.*;
+
+import com.sut.sa.g21.entity.*;
+import com.sut.sa.g21.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.sut.sa.g21.entity.Province;
-import com.sut.sa.g21.entity.Status;
-import com.sut.sa.g21.entity.ShippingProcess;
-import com.sut.sa.g21.entity.ShippingSlip;
-import com.sut.sa.g21.entity.Preorder;
-import com.sut.sa.g21.repository.PreorderRepository;
-import com.sut.sa.g21.repository.ProvinceRepository;
-import com.sut.sa.g21.repository.StatusRepository;
-import com.sut.sa.g21.repository.ProcessRepository;
-import com.sut.sa.g21.repository.SlipRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -31,7 +24,6 @@ public class ShippingSlipSystemController {
 
     @Autowired
     private PreorderRepository preorderRepository;
-
 
     // @GetMapping("/Province")
     // public Collection<Province> Province() {

@@ -13,6 +13,20 @@ export class AppComponent {
   constructor(private router:Router){
 
   }
+
+  isUndefine():boolean{
+    return localStorage.getItem('id')==undefined;
+  }
+
+  isAdmin():boolean{
+    return localStorage.getItem('id')==='admin';
+  }
+
+  logout(){
+    localStorage.removeItem('id');
+    this.router.navigate(['/login'])
+  }
+
   goClassification(){
       this.router.navigate(['/classification'])
   }

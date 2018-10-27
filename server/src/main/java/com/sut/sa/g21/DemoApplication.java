@@ -16,7 +16,8 @@ public class DemoApplication {
 	
 	@Bean
 	ApplicationRunner init(ProductRepository productRepository, TypeRepository typeRepository, CountryRepository countryRepository, ClassificationRepository classificationRepository, ProvinceRepository provinceRepository, StatusRepository statusRepository, UserRepository userRepository, 
-						   SuggestionRepository suggestionRepository, PreorderRepository preorderRepository,WarehouseRepository warehouseRepository,GenderRepository genderRepository) {
+						   SuggestionRepository suggestionRepository, PreorderRepository preorderRepository,WarehouseRepository warehouseRepository,GenderRepository genderRepository,
+						   PaymentRepository paymentRepository) {
 		return args -> {
 			Stream.of("กระบี่","กรุงเทพมหานคร","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร","ขอนแก่น","จันทบุรี","ฉะเชิงเทรา" ,"ชลบุรี","ชัยนาท","ชัยภูมิ","ชุมพร","เชียงราย","เชียงใหม่","ตรัง","ตราด","ตาก","นครนายก","นครปฐม","นครพนม","นครราชสีมา" ,"นครศรีธรรมราช","นครสวรรค์","นนทบุรี","นราธิวาส","น่าน","บุรีรัมย์","บึงกาฬ","ปทุมธานี","ประจวบคีรีขันธ์","ปราจีนบุรี","ปัตตานี" ,"พะเยา","พังงา","พัทลุง","พิจิตร","พิษณุโลก","เพชรบุรี","เพชรบูรณ์","แพร่","ภูเก็ต","มหาสารคาม","มุกดาหาร","แม่ฮ่องสอน" ,"ยโสธร","ยะลา","ร้อยเอ็ด","ระนอง","ระยอง","ราชบุรี","ลพบุรี","ลำปาง","ลำพูน","เลย","ศรีสะเกษ","สกลนคร","สงขลา" ,"สตูล","สมุทรปราการ","สมุทรสงคราม","สมุทรสาคร","สระแก้ว","สระบุรี","สิงห์บุรี","สุโขทัย","สุพรรณบุรี","สุราษฎร์ธานี" ,"สุรินทร์","หนองคาย","หนองบัวลำภู","อยุธยา","อ่างทอง","อำนาจเจริญ","อุดรธานี","อุตรดิตถ์","อุทัยธานี","อุบลราชธานี").forEach(provinceName -> { 
                 provinceRepository.save(new Province(provinceName));
@@ -99,7 +100,7 @@ public class DemoApplication {
 			genderRepository.save(genderF);
 
 			User newUser = new User(1);
-			newUser.setUserUsername("Test01");
+			newUser.setUserUsername("admin");
 			newUser.setUserPassword("1234");
 			newUser.setUserFirstName("Test");
 			newUser.setUserLastName("Test");
@@ -111,7 +112,7 @@ public class DemoApplication {
 			
 			User newUser2 = new User(1);
 			newUser2.setUserUsername("zzzz");
-			newUser2.setUserPassword("zzzz");
+			newUser2.setUserPassword("z");
 			newUser2.setUserFirstName("Test");
 			newUser2.setUserLastName("Test");
 			newUser2.setUserAddress("24/16 ถนน บางรัก ตำบล เมืองดอย อำเภอ ดอนเมือง 15000");
@@ -119,7 +120,6 @@ public class DemoApplication {
 			newUser2.setUserTelephone("0999999999");
 			newUser2.setProvinces(provinceRepository.findById(55L).get());
 			userRepository.save(newUser2);
-
 
 			Stream.of("รีวิวร้านค้า", "ควรปรับปรุงร้านค้า", "ควรพัฒนาร้านค้า").forEach(suggestionhead -> {
                 Suggestion sughead = new Suggestion();

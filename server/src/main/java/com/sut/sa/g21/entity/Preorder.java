@@ -34,4 +34,12 @@ public class Preorder{
     public Preorder(long preId){
         this.preId = preId;
     }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
 }

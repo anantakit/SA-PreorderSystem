@@ -25,8 +25,8 @@ public class ShippingSlip {
     @JoinColumn(name = "statusId")
     private Status status;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "preId", nullable = false)
+    @OneToOne()
+    @JoinColumn(name = "preId")
     private Preorder preorder;
 
 

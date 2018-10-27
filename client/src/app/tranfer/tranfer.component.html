@@ -4,44 +4,44 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <form #paymentForm="ngForm" name="form" (ngSubmit)="save(payment)">
-<mat-card>
-  <div style="margin-left: 180px;margin-top: 30px">
-  <mat-form-field>
-  <input matInput placeholder="ชื่อ-นามสกุล" name="name" [(ngModel)]="payment.name" value="{{names.userFirstName}} {{names.userLastName}}" disabled #name>
-  </mat-form-field>
-  <br>
-    <mat-form-field>
-  <mat-select name="orderId" placeholder="หมายเลขคำสั่งซื้อ" [(ngModel)]="payment.id" #id>
-    <mat-option *ngFor="let report of reports" value="{{report.id}}">
-      {{report.id}}
-    </mat-option>
-  </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input matInput name="amount" type="number" min="0" max="1000000" step="0.01" placeholder="ยอดเงินที่โอน" [(ngModel)]="payment.amount" #amount>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    วันที่โอน
-    <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="payment.date" #date>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <br>
-    เวลา
-    <mat-form-field>
-      <input matInput name="time" type="time" [(ngModel)]="payment.time" #time>
-    </mat-form-field>
-  <br>
-    หลักฐานการโอน
-    <input type="file" accept="image/jpg, image/png, image/jpeg" (change)="selectFile($event)" #file>
-    <br>*เฉพาะไฟล์ .jpg .png ไม่เกิน 1 MB<br>
-  <mat-form-field style="width: 30%">
-    <textarea matInput placeholder="หมายเหตุ" name="note" [(ngModel)]="payment.note"></textarea>
-  </mat-form-field>
-  <br>
-  <button mat-raised-button color="primary" type="submit">ส่ง</button>
-  </div>
-</mat-card>
+  <mat-card>
+    <div style="margin-left: 180px;margin-top: 30px">
+      <mat-form-field>
+        <input matInput placeholder="ชื่อ-นามสกุล" name="name" [(ngModel)]="payment.name" value="{{names.userFirstName}} {{names.userLastName}}" disabled #name>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-select name="orderId" placeholder="หมายเลขคำสั่งซื้อ" [(ngModel)]="payment.id" #id>
+          <mat-option *ngFor="let report of reports" value="{{report.preId}}">
+            {{report.preId}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput name="amount" type="number" min="0" max="1000000" step="0.01" placeholder="ยอดเงินที่โอน" [(ngModel)]="payment.amount" #amount>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        วันที่โอน
+        <input matInput [matDatepicker]="picker" name="date" [(ngModel)]="payment.date" #date>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      เวลา
+      <mat-form-field>
+        <input matInput name="time" type="time" [(ngModel)]="payment.time" #time>
+      </mat-form-field>
+      <br>
+      หลักฐานการโอน
+      <input type="file" accept="image/jpg, image/png, image/jpeg" (change)="selectFile($event)" #file>
+      <br>*เฉพาะไฟล์ .jpg .png ไม่เกิน 1 MB<br>
+      <mat-form-field style="width: 30%">
+        <textarea matInput placeholder="หมายเหตุ" name="note" [(ngModel)]="payment.note"></textarea>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" type="submit">ส่ง</button>
+    </div>
+  </mat-card>
 </form>

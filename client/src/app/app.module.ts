@@ -32,10 +32,11 @@ import { ReviewComponent } from './review/review.component';
 import { ReviewService} from './shared/review/review.service';
 import { TranferComponent } from './tranfer/tranfer.component';
 import { TranferService } from './shared/tranfer/tranfer.service';
+import { AuthGuard } from './auth.guard';
 const appRoutes: Routes = [
   {path: 'classification', component: ClassificationComponent},
   {path: 'shopping', component: ShoppingComponent},
-  {path: 'preorder/:product', component: PreorderComponent},
+  {path: 'preorder/:product', component: PreorderComponent, canActivate:[AuthGuard]},
   {path: 'show-preorder', component: ShowPreorderComponent},
   {path: 'Stock', component: StockComponent},
   {path: 'Register', component: RegisterComponent},
@@ -86,7 +87,7 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatButtonToggleModule, 
   ],
-  providers: [ClassificationService,LoginService,PreorderService,StockService, RegisterService,ShippingService,ReviewService,TranferService],
+  providers: [ClassificationService,LoginService,PreorderService,StockService, RegisterService,ShippingService,ReviewService,TranferService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

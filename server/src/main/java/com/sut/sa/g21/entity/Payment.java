@@ -3,24 +3,29 @@ package com.sut.sa.g21.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.sut.sa.g21.controller.SqlTimeDeserializer;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.sql.*;
 
+@Data
+@ToString
+@EqualsAndHashCode
 @Entity
 public class Payment {
     @Id
     @SequenceGenerator(name="payment_seq",sequenceName="payment_seq")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="payment_seq")
     @Column(name = "payment_id") private Long id;
-    private Date date;
+    private @NonNull
+    Date date;
     @JsonFormat(pattern = "HH:mm")
     @JsonDeserialize(using = SqlTimeDeserializer.class)
     private Time time;
-    private double amount;
+    private @NonNull double amount;
     private String note;
     private Timestamp submitTime;
 
@@ -35,7 +40,7 @@ public class Payment {
     public StorageFile storageFile;
 
     @OneToOne(cascade = CascadeType.ALL)
-    public Preorder preorder;
+    public Preorder preorderEntity;
 
     public Long getId(){
         return  this.id;
@@ -65,7 +70,8 @@ public class Payment {
         this.submitTime = submitTime;
     }
 
-    public void setPreorder(Preorder preorder) {
-        this.preorder = preorder;
+    public void setPreorder(Preorder preorderEntity) {
+        this.preorderEntity = preorderEntity;
     }
+
 }

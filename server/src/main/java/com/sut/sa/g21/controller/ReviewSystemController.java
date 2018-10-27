@@ -34,8 +34,8 @@ public class ReviewSystemController {
         return reviewRepository.findById(reviewId);
     }
    
-    @PostMapping("/Review/createReview/{userId}/{productId}/{suggestionId}")
-    public Review createComment(@PathVariable Long productId,@PathVariable Long userId,@PathVariable Long suggestionId,
+    @PostMapping("/Review/createReview/{userName}/{productId}/{suggestionId}")
+    public Review createComment(@PathVariable Long productId,@PathVariable String userName,@PathVariable Long suggestionId,
                            @RequestBody Map<String,String> datacomment)throws JsonParseException,IOException {
 
         String jsonScore = datacomment.get("scoreSelect");
@@ -45,7 +45,7 @@ public class ReviewSystemController {
         Review rv = new Review();
 
         rv.setProduct(productRepository.findById(productId).get());
-        rv.setUser(userRepository.findById(userId).get());
+        rv.setUser(userRepository.findByuserUsername(userName));
         rv.setComment(jsonComment);
         rv.setScore(Long.valueOf(jsonScore));
         rv.setSuggestion(suggestionRepository.findById(suggestionId).get());

@@ -22,5 +22,9 @@ public class Status{
     }    
     public Status(long statusId){
         this.statusId = statusId;
-    } 
+    }
+
+    public long getStatusId() {
+        return statusId;
+    }
 }
