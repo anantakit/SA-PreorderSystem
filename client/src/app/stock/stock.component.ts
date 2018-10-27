@@ -296,6 +296,7 @@ export class StockComponent implements OnInit {
         this.getOrderProductList();
         this.disOrderProductIdSelect = null;
         this.disWarehouseSelect = null;
+        window.location.reload();
       },
       error => {
         alert('ไม่สามารถทำรายการได้');
