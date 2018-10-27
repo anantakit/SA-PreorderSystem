@@ -109,3 +109,11 @@ li {
     border: 2px solid #616161;
     padding: 1px;
 }
+
+nav {
+    float: left;
+    width: 250px;
+    height: 600px;
+    background: transparent;
+    padding: 20px;
+  }

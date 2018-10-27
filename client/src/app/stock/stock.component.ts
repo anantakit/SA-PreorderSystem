@@ -25,6 +25,9 @@ export interface Order {
 }
 export interface PreordersNotOrderList {
   preId: number;
+  userUsername: String;
+  productName:  String;
+  amount: number;
   orderStatus: String;
 }
 @Component({
@@ -166,6 +169,9 @@ export class StockComponent implements OnInit {
         if (data[index].orderStatus === false) {
           PreordersNotOrder.push({
             preId: data[index].preId,
+            productName: data[index].product.productName,
+            userUsername: data[index].user.userUsername,
+            amount: data[index].amount,
             orderStatus: data[index].orderStatus
           });
         } else {

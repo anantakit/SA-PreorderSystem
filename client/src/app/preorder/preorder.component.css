@@ -1,10 +1,17 @@
 div.preorder{
-    background-color:rgb(179, 236, 250); 
-    border: 2px solid black;
+    color: black;
+    background-color: transparent; 
     padding: 30px;
-    background-image: url("https://i.pinimg.com/originals/a4/eb/6b/a4eb6b66c1d4275a11763775f851977c.png");   
+    background-image: url("https://www.picz.in.th/images/2018/10/28/37lAM9.png");   
     background-repeat: no-repeat;
     background-position: center;
     background-size:300px 300px;
     
 }
+nav {
+    float: left;
+    width: 250px;
+    height: 600px;
+    background: transparent;
+    padding: 20px;
+  }

@@ -86,7 +86,9 @@ footer {
   margin-right: 10px;
 }
 
-
+.preorder-id {
+  width: 300px;
+}
 .product-name {
   width: 300px;
 }
@@ -131,9 +133,9 @@ height: 300px;
 }
 
 nav {
-float: left;
-width: 250px;
-height: 600px;
-background: transparent;
-padding: 20px;
+  float: left;
+  width: 250px;
+  height: 600px;
+  background: transparent;
+  padding: 20px;
 }

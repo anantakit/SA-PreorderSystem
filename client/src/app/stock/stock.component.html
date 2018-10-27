@@ -1,6 +1,6 @@
 <mat-toolbar color="accent">
   <mat-toolbar-row>
-    <p class="a">ระบบสต๊อกสินค้า</p>
+    <p class="a">สต๊อกสินค้า</p>
   </mat-toolbar-row>
 </mat-toolbar>
 <nav>
@@ -185,9 +185,9 @@
               <table class="order-product" cellspacing="5">
                 <tr>
                   <mat-form-field class="preorder-id">
-                    <mat-select [(ngModel)]="ordPreorderId" placeholder="หมายเลขใบสั่งจอง">
+                    <mat-select [(ngModel)]="ordPreorderId" placeholder="หมายเลขใบสั่งจอง, ผู้สั่งจอง, สินค้า,จำนวนสินค้า">
                       <mat-option *ngFor="let Preorder of PreordersNotOrder" [value]="Preorder.preId">
-                        {{Preorder.preId}}
+                        {{Preorder.preId+", "+Preorder.userUsername+", "+Preorder.productName+", "+Preorder.amount}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>

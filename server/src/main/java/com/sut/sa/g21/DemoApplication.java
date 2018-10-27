@@ -112,9 +112,9 @@ public class DemoApplication {
 			
 			User newUser2 = new User(1);
 			newUser2.setUserUsername("zzzz");
-			newUser2.setUserPassword("z");
-			newUser2.setUserFirstName("Test");
-			newUser2.setUserLastName("Test");
+			newUser2.setUserPassword("zzzz");
+			newUser2.setUserFirstName("น้ำดำ");
+			newUser2.setUserLastName("ตาเสือดาว");
 			newUser2.setUserAddress("24/16 ถนน บางรัก ตำบล เมืองดอย อำเภอ ดอนเมือง 15000");
 			newUser2.setUserEmail("test@test.t");
 			newUser2.setUserTelephone("0999999999");

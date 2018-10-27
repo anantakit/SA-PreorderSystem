@@ -1,7 +1,7 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranferService } from '../shared/tranfer/tranfer.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class TranferComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
 
-  constructor(private tranferService:TranferService,private route: ActivatedRoute) { }
+  constructor(private tranferService:TranferService,private router:Router) { }
 
   ngOnInit() {
     this.username = localStorage.getItem('id');
@@ -65,6 +65,7 @@ export class TranferComponent implements OnInit {
     this.tranferService.save(form,this.payment.id,this.currentFileUpload.name).subscribe(data => {
       alert('save suscess');
       console.log(form+'\n'+this.payment.id+'\n'+this.currentFileUpload.name);
+      this.router.navigate(['/show-preorder'])
     },error1 => {
       alert('save error');
     });
