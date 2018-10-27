@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDatepickerModule,MatButtonModule, MatCardModule, MatInputModule, MatNativeDateModule,MatListModule, MatToolbarModule,MatPaginatorModule,MatGridListModule} from '@angular/material';
+import { MatDatepickerModule,MatButtonModule, MatCardModule, MatInputModule, MatNativeDateModule,MatListModule,
+   MatToolbarModule,MatPaginatorModule, MatButtonToggleModule,MatGridListModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -27,7 +28,10 @@ import {ShippingService} from './shared/shipping/shipping.service';
 import { ShowShippingslipComponent } from './show-shippingslip/show-shippingslip.component';
 import { ClassificationComponent } from './classification/classification.component';
 import { ShoppingComponent } from './shopping/shopping.component';
-
+import { ReviewComponent } from './review/review.component';
+import { ReviewService} from './shared/review/review.service';
+import { TranferComponent } from './tranfer/tranfer.component';
+import { TranferService } from './shared/tranfer/tranfer.service';
 const appRoutes: Routes = [
   {path: 'classification', component: ClassificationComponent},
   {path: 'shopping', component: ShoppingComponent},
@@ -37,6 +41,10 @@ const appRoutes: Routes = [
   {path: 'Register', component: RegisterComponent},
   {path: 'shipping', component: ShippingComponent},
   {path: 'showship', component: ShowShippingslipComponent},
+  {path: 'review', component: ReviewComponent },
+  {path: 'tranfer', component: TranferComponent },
+  {path: 'login', component: LoginComponent },
+  {path: '',redirectTo:'login',pathMatch:'full'}
 ];
 
 @NgModule({
@@ -52,6 +60,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     ShippingComponent,
     ShowShippingslipComponent,
+    ReviewComponent,
+    TranferComponent
   ],
   imports: [
     BrowserModule,
@@ -74,8 +84,9 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatButtonToggleModule, 
   ],
-  providers: [ClassificationService,LoginService,PreorderService,StockService, RegisterService,ShippingService],
+  providers: [ClassificationService,LoginService,PreorderService,StockService, RegisterService,ShippingService,ReviewService,TranferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -78,6 +78,7 @@ public class PreorderSystemController{
         Product product = productRepository.findById(productId).get(); 
         User user = userRepository.findByuserUsername(userName);
         Status status = statusRepository.findById(1L).get();
+        newPreorder.setOrderStatus(false);
         newPreorder.setAmount(Long.valueOf(body.get("amount").toString()));
         newPreorder.setSumPrice(Double.valueOf(body.get("sumPrice").toString()));
         newPreorder.setStatus(status);
@@ -85,24 +86,5 @@ public class PreorderSystemController{
         newPreorder.setUser(user);
         return preorderRepository.save(newPreorder);
     }
-
-    // @PostMapping("/login")
-    // @CrossOrigin(origins = "http://localhost:4200")
-    // public void login(@RequestBody UserInfoEntity userInfoEntity) throws Exception {
-    // UserInfoEntity user = userInfoRepository.findByName(userInfoEntity.getName());
-    //     if (!loginAuth(userInfoEntity.getPassword().getBytes(),userInfoEntity.getPassword().getBytes()))
-    //         throw new Exception();
-    // }
-
-    // public boolean loginAuth(byte[] userPassword,byte[] password){
-    //     int result = 0;
-    //     if (userPassword.length != password.length)
-    //         return false;
-    //     else{
-    //         for (int i = 0; i < password.length; i++)
-    //             result |= password[i] ^ userPassword[i];
-    //     }
-    //     return result == 0;
-    // }
 
 }

@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<mat-toolbar color="primary">
+ 
+  <mat-toolbar-row>
+    <span style="font-size: 40px; color: azure">รีวิวให้คะแนนร้านค้า</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="body">
+  <div class="midbody">
+
+    <!--         ส่วนกล่องข้อความขอบคุณลูกค้า    -->
+    <div class="storeborder" style="margin-left: 4%">
+      <h3>
+        <p>ขอขอบคุณลูกค้าทุกท่านที่เข้ามาใช้บริการ
+          และโหวตให้กับร้านค้าของเรา<br>
+          หากลูกค้าท่านใดต้องการเสนอแนะหรืออยากจะรีวิวร้าน<br>
+          คุณลูกค้าสามารถแสดงความคิดเห็น/ข้อเสนอแนะเข้ามาได้</p>
+      </h3>
+    </div>
+
+
+    <!--            ส่วน ปุ่มกับกรอบล้อมปุ่มโหวตครับ    -->
+    <div style="margin-top:3%" class="voteborder">
+      <mat-button-toggle-group [(ngModel)]="addcomment.scoreSelect" #vote="matButtonToggleGroup">
+        <mat-button-toggle value=1><button mat-fab background-color: #ff0000; class="votebot">1</button></mat-button-toggle>
+        <mat-button-toggle value=2><button mat-fab background-color: #ff0000; class="votebot">2</button></mat-button-toggle>
+        <mat-button-toggle value=3><button mat-fab background-color: #ff0000; class="votebot">3</button></mat-button-toggle>
+        <mat-button-toggle value=4><button mat-fab background-color: #ff0000; class="votebot">4</button></mat-button-toggle>
+        <mat-button-toggle value=5><button mat-fab background-color: #ff0000; class="votebot">5</button></mat-button-toggle>
+      </mat-button-toggle-group>
+      <div class="votetext">คะแนนโหวต = {{vote.value}}</div>
+    </div>
+
+    <!--    แสดงหัวข้อความคิดเห็น/ข้อเสนอแนะ       -->
+    <div class="headreview">
+      <h2>แสดงความคิดเห็น/ข้อเสนอแนะ</h2>
+    </div>
+
+    <!--  กรอบคุมแสดงความคิดเห็น/ข้อเสนอแนะ    -->
+    <div class="commentborder" style="margin-left: 2%;">
+
+      <!--  ส่วนเลือกข้อเสนอแนะ   -->
+      <div style="margin-top: 10px; margin-left: 2%;">ข้อเสนอแนะ <div style=" margin-top: -10px;">
+          <mat-form-field>
+            <mat-select [(ngModel)]="suggestionSelect">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion.suggestionId">
+                {{suggestion.suggestionHead}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!--  ส่วนเลือกเคยซื้อ    -->
+      <div style="margin-left:2%;">
+        <div style="margin-top: 3px ">เคยซื้อสินค้า </div>
+        <mat-form-field>
+          <mat-select [(ngModel)]="productSelect">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let product of products" [value]="product.productId">
+              {{product.productName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!--  ส่วนกรอกแสดงความคิดเห็น    -->
+      <div style="margin-left:2%;">
+        <div style="margin-top: 10px ">แสดงความคิดเห็น/ข้อเสนอแนะ </div>
+        <textarea matInput class="commentbox" [(ngModel)]="addcomment.inputComment"></textarea>
+      </div>
+    </div>
+
+    <!--           ส่วนของปุ่มคอมเม้น         -->
+    <div class="sendcommentbot"><button mat-raised-button color="accent" (click)="addReview()">
+        <p style="text-align: center;">ส่ง
+        </p>
+      </button></div>
+
+    <!--               ส่วนชื่อของแสดงคอมเม้น   -->
+    <div style="margin-left:2%; ">
+      <div class="headshowcomment">
+        <h2>แสดงความคิดเห็น/ข้อเสนอแนะ</h2>
+      </div>
+    </div>
+
+    <!--           ส่วนของกล่องแสดงคอมเม้นครับ                -->
+
+    <div style="margin-left: 2%; margin-top:20px;">
+      <div *ngFor="let review of reviews">
+        <div class="showcommentreview">
+          <div style="margin-top: 2%;">
+            <h3 style="text-align: left;">หัวข้อ: {{review.suggestion.suggestionHead}}</h3>
+            <div *ngIf="review.score == 1">
+                score : 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>  
+            </div>
+            
+
+            <div *ngIf="review.score == 2">
+                score : 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>  
+            </div>
+
+            <div *ngIf="review.score == 3">
+                score : 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>  
+            </div>
+
+            <div *ngIf="review.score == 4">
+                score : 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>  
+            </div>
+
+            <div *ngIf="review.score == 5">
+                score : 
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>  
+            </div>
+
+            <mat-list>
+              <mat-divider style="background-color:rgb(199, 196, 196);"> </mat-divider>
+           
+                  <p style="white-space: pre-line">{{review.comment}}</p>
+                  
+             
+              <mat-divider style="background-color:rgb(199, 196, 196);"></mat-divider>
+            </mat-list>
+           
+           
+            <div style="margin-top: 2%;">
+              <p style="text-align: left;">ชื่อผู้ใชั : {{review.user.userFirstName}}  {{review.user.userLastName}}</p>
+              <p style="text-align: left;">สินค้าที่เคยซื้อ : {{review.product.productName}} </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:500px;"></div>
+  </div>

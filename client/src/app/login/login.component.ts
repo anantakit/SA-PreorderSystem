@@ -11,8 +11,8 @@ import {NgForm} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   user:any={
-    name:'',
-    password:''
+    userUsername:'',
+    userPassword:''
   }
 
   constructor(private route:Router,private loginService:LoginService) { }
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   login(userForm:NgForm){
     this.loginService.login(userForm).subscribe(data => {
-      this.loginService.setUsername(this.user.name);
+      localStorage.setItem('id',this.user.userUsername);
       this.route.navigate(['shopping']);
     },error => {
       alert('wrong username or password');

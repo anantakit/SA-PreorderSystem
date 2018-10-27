@@ -13,7 +13,7 @@ export class PreorderComponent implements OnInit {
   productIndex:number;
   productName = '';
   productPrice = 0;
-  userName = 'YoYo';
+  userName = '';
   productSelect:any;
   preorder: any = {
     amount: '',
@@ -24,7 +24,7 @@ export class PreorderComponent implements OnInit {
   }
   
 ngOnInit() {
-    
+      this.userName = localStorage.getItem('id');
       this.preorderService.getProduct( this.productIndex).subscribe(data => {
         this.productName = data.productName;
         this.productPrice = data.productPrice;

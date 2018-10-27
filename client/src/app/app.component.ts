@@ -37,6 +37,12 @@ export class AppComponent {
   goShowShipping(){
     this.router.navigate(['/showship'])
   }
+  goReview(){
+    this.router.navigate(['/review'])
+  }
+  goTranfer(){
+    this.router.navigate(['/tranfer'])
+  }
 }
 
 

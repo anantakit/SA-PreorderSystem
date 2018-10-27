@@ -17,7 +17,7 @@ export class ShowPreorderComponent implements OnInit {
   preorder:Array<any>;
   displayedColumns: string[] = ['preId', 'productName', 'amount', 'sumPrice','status'];
   dataSource:any;
-  userName = 'YoYo'
+  userName = ''
   constructor(private preorderService: PreorderService) { }
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit() {
@@ -25,6 +25,7 @@ export class ShowPreorderComponent implements OnInit {
   }
   
   getPreorderList(){
+    this.userName = localStorage.getItem('id');
     this.preorderService.getPreorderByUserName(this.userName).subscribe(data => {
     const preorderList: Preorder[] = [];
     console.log(data);

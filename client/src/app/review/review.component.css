@@ -1,0 +1,111 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    }
+    
+li {
+    float: left;
+}
+
+.body {
+    margin-left:185px ;
+}
+
+.midbody {    
+    margin-left:2%;
+    margin-top:50px;
+}
+.avgbox {
+    float:left;
+    width: 50%;
+    padding:10px;
+    height: 20%;
+
+}
+
+.checked {
+    color: orange;
+}
+
+.storeborder {
+    width: 500px;
+    border: 5px solid #616161;
+    background-color: #FAF0E6;
+    padding: 10px;
+}
+
+.voteborder {
+    width: 360px;
+    height: 85px;
+    border: 2px solid #616161 ;
+    background-color: #FAF0E6;
+    padding: 7px;
+    margin-top: -105px;
+    margin-left: 10%;
+  
+    
+}
+
+.votetext {
+    margin: 15px ;
+    text-align: center;
+  }
+.votebot    {
+    text-align:center; 
+    font-size:160%; 
+    height:50px;
+    width:40px
+}
+.headreview     {
+    margin-top: 50px;
+    margin-left: 2%;
+}
+.botcomment {
+    background-color: #ff4081;
+    border:none;
+    color:white;
+    height: 50px;
+    width: 80px;
+    margin-left:600px;
+    font-size: 16px;
+}
+.commentbox {
+    margin-top: 3px;
+    width: 500px;
+    height: auto;
+    border: 2px solid #616161;
+    padding: 20px;
+}
+.headshowcomment    {
+    margin-top: 50px;
+    font-size:100%; 
+    font-family:verdana;
+}
+.showcommentreview  {
+    margin-top:10px;
+    width: 500px;
+    border: 5px solid #616161;
+    padding: 10px;
+    height: auto;
+    background-color: #FAF0E6;
+}
+.sendcommentbot {
+    margin-top: -85px;
+    margin-left: 620px;
+}
+.commentborder  {
+    width: 700px;
+    border: 5px solid #616161;
+    padding: 10px;
+    height: auto;
+    background-color: #FAF0E6;
+}
+.usedbuybox {
+    margin-top: 3px;
+    width: 500px;
+    height: auto;
+    border: 2px solid #616161;
+    padding: 1px;
+}

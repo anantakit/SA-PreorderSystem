@@ -15,7 +15,7 @@ public class Preorder{
     private @NonNull long preId;
     private long amount;
     private double sumPrice;
-    private @NonNull Boolean orderStatus = false;
+    private @NonNull Boolean orderStatus;
     @ManyToOne()   
     @JoinColumn(name= "statusId")     
     private Status status;
@@ -34,16 +34,4 @@ public class Preorder{
     public Preorder(long preId){
         this.preId = preId;
     }
-    /*
-    public Preorder(long userId,long productId,long productNum,double sumPrice,long statusId){
-        User user = new User(userId);
-        Product product = new Product(productId);
-        Status status = new Status(statusId);
-        this.user = user;
-        this.product = product;
-        this.productNum = productNum;
-        this.sumPrice = sumPrice;
-        this.status = status;
-    }
-    */
 }

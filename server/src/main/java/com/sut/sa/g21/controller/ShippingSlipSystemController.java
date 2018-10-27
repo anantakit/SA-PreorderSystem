@@ -77,11 +77,11 @@ public class ShippingSlipSystemController {
 
     @PostMapping("/Shippingslip/addShippingslip/{preorderId}/{shippingProcessId}/{start}/{end}")
     public ShippingSlip newShippingslip(@PathVariable Long preorderId, @PathVariable Long shippingProcessId, @PathVariable Long start, @PathVariable Long end)  {
-
+        ShippingSlip newShippingslip = new ShippingSlip();
         Status status = statusRepository.findByStatusName("ส่งสินค้าแล้ว");
         Preorder preorder = preorderRepository.findById(preorderId).get();
         ShippingProcess newshippingProcess = processRepository.findByShippingProcessId(shippingProcessId);
-        ShippingSlip newShippingslip = new ShippingSlip();
+ 
 
         preorder.setStatus(status);
         newShippingslip.setStatus(status);
